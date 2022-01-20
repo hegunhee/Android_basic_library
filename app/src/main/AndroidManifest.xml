@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Android_basic_library">
-        <activity android:name=".MenuActivity"
+        <activity android:name=".FragmentContainerActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -18,9 +18,16 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".NotifyActivity"
+            android:name=".ActionViewActivity"
             android:exported="true">
+
         </activity>
+        <activity
+            android:name=".MenuActivity"
+            android:exported="true"></activity>
+        <activity
+            android:name=".NotifyActivity"
+            android:exported="true" />
 
         <receiver
             android:name=".NotifyReceiver"
@@ -29,7 +36,7 @@
 
         <activity
             android:name=".MainActivity"
-            android:exported="true"></activity>
+            android:exported="true" />
     </application>
 
 </manifest>
