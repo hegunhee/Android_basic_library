@@ -1,4 +1,4 @@
-package com.hegunhee.android_basic_library
+package com.hegunhee.android_basic_library.fragment
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

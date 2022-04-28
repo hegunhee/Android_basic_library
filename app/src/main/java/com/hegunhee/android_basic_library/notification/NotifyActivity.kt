@@ -1,4 +1,4 @@
-package com.hegunhee.android_basic_library
+package com.hegunhee.android_basic_library.notification
 
 import android.app.NotificationChannel
 import android.app.NotificationManager
@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.core.app.NotificationCompat
 import androidx.core.app.RemoteInput
+import com.hegunhee.android_basic_library.R
 import com.hegunhee.android_basic_library.databinding.ActivityNotifyBinding
 
 class NotifyActivity : AppCompatActivity() {

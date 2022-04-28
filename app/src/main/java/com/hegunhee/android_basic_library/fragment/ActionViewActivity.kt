@@ -1,9 +1,10 @@
-package com.hegunhee.android_basic_library
+package com.hegunhee.android_basic_library.fragment
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import androidx.appcompat.widget.SearchView
+import com.hegunhee.android_basic_library.R
 import com.hegunhee.android_basic_library.databinding.ActivityActionViewBinding
 
 class ActionViewActivity : AppCompatActivity() {

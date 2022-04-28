@@ -1,4 +1,4 @@
-package com.hegunhee.android_basic_library
+package com.hegunhee.android_basic_library.notification
 
 import android.app.NotificationManager
 import android.content.BroadcastReceiver
