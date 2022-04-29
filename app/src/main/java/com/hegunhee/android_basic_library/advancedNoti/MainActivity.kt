@@ -11,6 +11,7 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
+import androidx.core.app.RemoteInput
 import com.hegunhee.android_basic_library.R
 import com.hegunhee.android_basic_library.databinding.ActivityMain2Binding
 
@@ -38,16 +39,16 @@ class MainActivity : AppCompatActivity() {
         }
         replyNotiButton.setOnClickListener {
             Toast.makeText(this@MainActivity, "replyNotification", Toast.LENGTH_SHORT).show()
+            createReplyNotificationChannel()
+            createReplyNotificaitonBuilder()
         }
     }
 
     private fun createJustNotificationChannel() {
         val important = NotificationManager.IMPORTANCE_DEFAULT
-        val channel = NotificationChannel(JUST_NOTI_CHANNEL_ID, "just_noti_name", important).apply {
+        NotificationChannel(JUST_NOTI_CHANNEL_ID, "just_noti_name", important).apply {
             description = "just_noti_desc"
-        }
-        (getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager).apply {
-            createNotificationChannel(channel)
+            setNotificatonChannel(this)
         }
     }
 
@@ -61,19 +62,22 @@ class MainActivity : AppCompatActivity() {
         NotificationManagerCompat.from(this).notify(JUST_NOTI_ID, builder.build())
     }
 
-    private fun createClickableNotificationChannel(){
+    private fun createClickableNotificationChannel() {
         val important = NotificationManager.IMPORTANCE_DEFAULT
-        val channel = NotificationChannel(CLICKABLE_NOTI_CHANNEL_ID,"clickable_noti_name",important).apply {
+        NotificationChannel(CLICKABLE_NOTI_CHANNEL_ID, "clickable_noti_name", important).apply {
             description = "clickable_noti_desc"
-        }
-        (getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager).apply {
-            createNotificationChannel(channel)
+            setNotificatonChannel(this)
         }
     }
 
-    private fun createClickableNotificationBuilder(){
-        val pendingIntent = Intent(this,ClickActivity::class.java)?.run {
-            PendingIntent.getActivity(this@MainActivity,12,this,PendingIntent.FLAG_UPDATE_CURRENT)
+    private fun createClickableNotificationBuilder() {
+        val pendingIntent = Intent(this, ClickActivity::class.java).run {
+            PendingIntent.getActivity(
+                this@MainActivity,
+                CLICKABLE_REQUEST_CODE,
+                this,
+                PendingIntent.FLAG_UPDATE_CURRENT
+            )
         }
         val builder = NotificationCompat.Builder(this, CLICKABLE_NOTI_CHANNEL_ID)
             .setSmallIcon(R.drawable.ic_launcher_background)
@@ -82,15 +86,63 @@ class MainActivity : AppCompatActivity() {
             .setPriority(NotificationCompat.PRIORITY_DEFAULT)
             .setAutoCancel(true)
             .setContentIntent(pendingIntent)
-        NotificationManagerCompat.from(this).notify(CLICKABLE_NOTI_ID,builder.build())
+        NotificationManagerCompat.from(this).notify(CLICKABLE_NOTI_ID, builder.build())
     }
+
+    private fun createReplyNotificationChannel() {
+        val important = NotificationManager.IMPORTANCE_DEFAULT
+        val channel =
+            NotificationChannel(REPLY_NOTI_CHANNEL_ID, "reply_noti_name", important).apply {
+                description = "reply_noti_desc"
+                setNotificatonChannel(this)
+            }
+    }
+
+    private fun createReplyNotificaitonBuilder() {
+        val pendingIntent = Intent(this, MyReceiver::class.java).run {
+            PendingIntent.getBroadcast(
+                this@MainActivity,
+                REPLY_REQUEST_CODE,
+                this,
+                PendingIntent.FLAG_UPDATE_CURRENT
+            )
+        }
+        val remoteInput = RemoteInput.Builder(KEY_TEXT_REPLY).run {
+            setLabel("답장")
+            build()
+        }
+        val builder = NotificationCompat.Builder(this, REPLY_NOTI_CHANNEL_ID)
+            .setSmallIcon(R.drawable.ic_launcher_background)
+            .setContentTitle("카톡")
+            .setContentText("답장좀 하지?")
+            .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+            .setAutoCancel(true)
+            .addAction(
+            NotificationCompat.Action.Builder(
+                R.drawable.ic_launcher_background,
+                "답장",
+                pendingIntent
+            ).addRemoteInput(remoteInput).build()
+        )
+        NotificationManagerCompat.from(this).notify(REPLY_NOTI_ID,builder.build())
+    }
+
+    private fun setNotificatonChannel(channel: NotificationChannel) {
+        (getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager).apply {
+            createNotificationChannel(channel)
+        }
+    }
+
 
     companion object {
         const val JUST_NOTI_CHANNEL_ID = "JustNoti"
         const val JUST_NOTI_ID = 10
         const val CLICKABLE_NOTI_CHANNEL_ID = "ClickableNoti"
         const val CLICKABLE_NOTI_ID = 20
+        const val CLICKABLE_REQUEST_CODE = 12
         const val REPLY_NOTI_CHANNEL_ID = "ReplyNoti"
         const val REPLY_NOTI_ID = 30
+        const val REPLY_REQUEST_CODE = 13
+        const val KEY_TEXT_REPLY = "key_text_reply"
     }
 }

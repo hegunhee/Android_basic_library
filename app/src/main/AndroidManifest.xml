@@ -9,8 +9,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Android_basic_library">
-        <activity android:name=".advancedNoti.ClickActivity"
-            android:exported="true"/>
+        <receiver
+            android:name=".advancedNoti.MyReceiver"
+            android:enabled="true"
+            android:exported="true"></receiver>
+
+        <activity
+            android:name=".advancedNoti.ClickActivity"
+            android:exported="true" />
         <activity
             android:name=".advancedNoti.MainActivity"
             android:exported="true">
@@ -31,7 +37,7 @@
             android:exported="true" />
         <activity
             android:name=".notification.NotifyActivity"
-            android:exported="true"/>
+            android:exported="true" />
 
         <receiver
             android:name=".notification.NotifyReceiver"
@@ -40,7 +46,7 @@
 
         <activity
             android:name=".fragment.MainActivity"
-            android:exported="true"/>
+            android:exported="true" />
     </application>
 
 </manifest>
