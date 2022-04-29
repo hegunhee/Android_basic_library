@@ -48,5 +48,14 @@
         android:text="replyNoti"
         app:layout_constraintTop_toBottomOf="@id/clickableNotiButton" />
 
+    <Button
+        android:id="@+id/logButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/replyNotiButton"
+        android:layout_marginTop="20dp"
+        android:text="LogActivity"
+        app:layout_constraintStart_toStartOf="@id/replyNotiButton"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

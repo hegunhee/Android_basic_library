@@ -3,16 +3,20 @@
     package="com.hegunhee.android_basic_library">
 
     <application
+        android:name=".AppApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Android_basic_library">
+        <activity android:name=".advancedNoti.LogActivity"
+            android:exported="true"></activity>
+
         <receiver
             android:name=".advancedNoti.MyReceiver"
             android:enabled="true"
-            android:exported="true"></receiver>
+            android:exported="true" />
 
         <activity
             android:name=".advancedNoti.ClickActivity"
@@ -37,7 +41,7 @@
             android:exported="true" />
         <activity
             android:name=".notification.NotifyActivity"
-            android:exported="true" />
+            android:exported="true"></activity>
 
         <receiver
             android:name=".notification.NotifyReceiver"

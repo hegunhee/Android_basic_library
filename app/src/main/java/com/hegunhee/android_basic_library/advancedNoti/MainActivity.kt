@@ -42,6 +42,11 @@ class MainActivity : AppCompatActivity() {
             createReplyNotificationChannel()
             createReplyNotificaitonBuilder()
         }
+        logButton.setOnClickListener {
+            Intent(this@MainActivity,LogActivity::class.java).run{
+                startActivity(this)
+            }
+        }
     }
 
     private fun createJustNotificationChannel() {
@@ -91,7 +96,6 @@ class MainActivity : AppCompatActivity() {
 
     private fun createReplyNotificationChannel() {
         val important = NotificationManager.IMPORTANCE_DEFAULT
-        val channel =
             NotificationChannel(REPLY_NOTI_CHANNEL_ID, "reply_noti_name", important).apply {
                 description = "reply_noti_desc"
                 setNotificatonChannel(this)
