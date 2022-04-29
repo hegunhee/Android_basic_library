@@ -9,7 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Android_basic_library">
-        <activity android:name=".advancedNoti.MainActivity"
+        <activity android:name=".advancedNoti.ClickActivity"
+            android:exported="true"/>
+        <activity
+            android:name=".advancedNoti.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -19,17 +22,16 @@
         </activity>
         <activity
             android:name=".fragment.FragmentContainerActivity"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name=".fragment.ActionViewActivity"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name=".fragment.MenuActivity"
             android:exported="true" />
         <activity
             android:name=".notification.NotifyActivity"
-            android:exported="true">
-        </activity>
+            android:exported="true"/>
 
         <receiver
             android:name=".notification.NotifyReceiver"
@@ -38,8 +40,7 @@
 
         <activity
             android:name=".fragment.MainActivity"
-            android:exported="true" >
-        </activity>
+            android:exported="true"/>
     </application>
 
 </manifest>
