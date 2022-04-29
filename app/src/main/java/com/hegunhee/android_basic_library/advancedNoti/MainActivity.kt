@@ -40,27 +40,29 @@ class MainActivity : AppCompatActivity() {
     private fun createNotificationChannel(){
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
             val important = NotificationManager.IMPORTANCE_DEFAULT
-            val channel = NotificationChannel(JUST_NOTI_ID, JUST_NOTI_NAME,important).apply {
-                description = JUST_NOTI_DESC
+            val channel = NotificationChannel(JUST_NOTI_CHANNEL_ID, "just_noti_name",important).apply {
+                description = "just_noti_desc"
             }
             (getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager).apply { createNotificationChannel(channel) }
         }
     }
 
     private fun createBuilder(){
-        val builder = NotificationCompat.Builder(this, JUST_NOTI_ID)
+        val builder = NotificationCompat.Builder(this, JUST_NOTI_CHANNEL_ID)
             .setSmallIcon(R.drawable.ic_launcher_background)
             .setContentTitle("Just Notification")
             .setContentText("Just")
             .setPriority(NotificationCompat.PRIORITY_DEFAULT)
             .setAutoCancel(true)
-        NotificationManagerCompat.from(this).notify(JUST_NOTI_NOTI_ID,builder.build())
+        NotificationManagerCompat.from(this).notify(JUST_NOTI_ID,builder.build())
     }
 
     companion object{
-        const val JUST_NOTI_ID = "10"
-        const val JUST_NOTI_NAME = "just_noti_name"
-        const val JUST_NOTI_DESC = "just_noti_title"
-        const val JUST_NOTI_NOTI_ID = 10
+        const val JUST_NOTI_CHANNEL_ID = "10"
+        const val JUST_NOTI_ID = 10
+        const val CLICKABLE_NOTI_CHANNEL_ID = "20"
+        const val CLICKABLE_NOTI_ID = 20
+        const val REPLY_NOTI_CHANNEL_ID = "30"
+        const val REPLY_NOTI_ID = 30
     }
 }
