@@ -10,18 +10,25 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 @AndroidEntryPoint
 class LogActivity : AppCompatActivity() {
-    private lateinit var binding : ActivityLogBinding
-    @Inject lateinit var logDao : LogDao
+    private lateinit var binding: ActivityLogBinding
+
+    @Inject
+    lateinit var logDao: LogDao
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityLogBinding.inflate(layoutInflater)
         setContentView(binding.root)
         GlobalScope.launch(Dispatchers.IO) {
-            Log.d("logData",logDao.getAll().toString())
+            val data = logDao.getAll()
+            withContext(Dispatchers.Main) {
+                binding.recyclerView.adapter = LogAdapter(data)
+            }
+
         }
     }
 }
