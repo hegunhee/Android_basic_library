@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/end"
+    app:startDestination="@id/endFragment">
+
+
+    <fragment
+        android:id="@+id/endFragment"
+        android:name="com.hegunhee.android_basic_library.navigation.EndFragment"
+        android:label="EndFragment"
+        tools:layout="@layout/fragment_end" />
+</navigation>
