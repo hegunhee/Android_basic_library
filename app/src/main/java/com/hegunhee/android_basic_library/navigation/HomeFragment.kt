@@ -38,6 +38,6 @@ class HomeFragment : Fragment() {
     }
 
     private fun sendDataNavigation(data: Int = 0) {
-        findNavController().navigate(R.id.home_to_dest, bundleOf("myArg" to data))
+        findNavController().navigate(HomeFragmentDirections.homeToDest(data))
     }
 }
