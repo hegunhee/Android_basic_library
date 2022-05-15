@@ -11,9 +11,9 @@ import androidx.navigation.fragment.findNavController
 import com.hegunhee.android_basic_library.R
 import com.hegunhee.android_basic_library.databinding.FragmentMiddleBinding
 
-class MiddleFragment : Fragment(){
+class MiddleFragment : Fragment() {
 
-    private lateinit var binding : FragmentMiddleBinding
+    private lateinit var binding: FragmentMiddleBinding
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -29,14 +29,16 @@ class MiddleFragment : Fragment(){
         initViews()
     }
 
-    private fun initViews() = with(binding){
+    private fun initViews() = with(binding) {
         button.setOnClickListener {
-            if(editText.text.toString() == ""){
+            if (editText.text.toString() == "") {
                 Toast.makeText(requireContext(), "값을입력해주세요", Toast.LENGTH_SHORT).show()
-            }else{
-                bundleOf("myArg" to editText.text.toString()).run {
-                    findNavController().navigate(R.id.middle_to_dest,this)
-                }
+            } else {
+                findNavController().navigate(
+                    MiddleFragmentDirections.middleToDest(
+                        editText.text.toString().toInt()
+                    )
+                )
             }
         }
 

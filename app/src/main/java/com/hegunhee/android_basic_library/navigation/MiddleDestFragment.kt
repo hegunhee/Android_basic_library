@@ -10,7 +10,7 @@ import com.hegunhee.android_basic_library.databinding.FragmentMiddleDestBinding
 
 class MiddleDestFragment : Fragment() {
 
-    private lateinit var binding : FragmentMiddleDestBinding
+    private lateinit var binding: FragmentMiddleDestBinding
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -22,8 +22,8 @@ class MiddleDestFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        arguments?.let {
-            binding.textview.text = it["myArg"].toString()
+        arguments?.run {
+            binding.textview.text = get("middleArgs").toString()
         }
     }
 }

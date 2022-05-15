@@ -24,7 +24,7 @@ class HomeDestFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        arguments?.apply {
+        arguments?.run {
             binding.textview.text = "value is ${get("myArg")}"
         }
 

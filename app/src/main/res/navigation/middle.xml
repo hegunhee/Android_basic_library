@@ -9,8 +9,8 @@
     <fragment
         android:id="@+id/middleFragment"
         android:name="com.hegunhee.android_basic_library.navigation.MiddleFragment"
-        tools:layout="@layout/fragment_middle"
-        android:label="MiddleFragment" >
+        android:label="MiddleFragment"
+        tools:layout="@layout/fragment_middle">
         <action
             android:id="@+id/middle_to_dest"
             app:destination="@id/middleDestFragment" />
@@ -20,8 +20,14 @@
     <fragment
         android:id="@+id/middleDestFragment"
         android:name="com.hegunhee.android_basic_library.navigation.MiddleDestFragment"
-        tools:layout="@layout/fragment_middle_dest"
-        android:label="MiddleDestFragment" />
+        android:label="MiddleDestFragment"
+        tools:layout="@layout/fragment_middle_dest">
+
+        <argument
+            android:name="middleArgs"
+            android:defaultValue="0"
+            app:argType="integer" />
+    </fragment>
 
 
 </navigation>
