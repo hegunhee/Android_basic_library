@@ -10,4 +10,9 @@
         android:id="@+id/record"
         android:title="record"
         />
+
+    <item
+        android:id="@+id/shared"
+        android:title="shared"
+        />
 </menu>

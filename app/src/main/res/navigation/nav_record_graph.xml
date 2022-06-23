@@ -10,9 +10,6 @@
         android:name="com.hegunhee.android_basic_library.drawerLayoutTest.TodayFragment"
         android:label="TodayFragment"
         tools:layout="@layout/fragment_today">
-        <action
-            android:id="@+id/today_to_record"
-            app:destination="@id/record" />
     </fragment>
 
     <fragment
@@ -20,8 +17,12 @@
         android:name="com.hegunhee.android_basic_library.drawerLayoutTest.RecordFragment"
         android:label="RecordFragment"
         tools:layout="@layout/fragment_record">
-        <action
-            android:id="@+id/record_to_today"
-            app:destination="@id/today" />
     </fragment>
+    <fragment
+        android:id="@+id/shared"
+        tools:layout="@layout/fragment_sharedpreference"
+        android:name="com.hegunhee.android_basic_library.drawerLayoutTest.SharedPreferenceFragment"
+        android:label="SharedPreferenceFragment" />
+
+
 </navigation>
