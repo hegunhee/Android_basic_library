@@ -2,6 +2,9 @@ package com.hegunhee.android_basic_library.drawerLayoutTest
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Gravity
+import android.view.Menu
+import android.view.MenuItem
 import androidx.appcompat.widget.Toolbar
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
@@ -16,8 +19,39 @@ class DrawerLayoutMainActivity : AppCompatActivity() {
         binding = ActivityDrawerLayoutMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         toolBar = binding.toolBar
-        setSupportActionBar(toolBar)
+        setActionBar()
         setNavigation()
+
+    }
+
+    private fun setActionBar(){
+        setSupportActionBar(toolBar)
+        supportActionBar?.run {
+            setDisplayHomeAsUpEnabled(true)
+            setDisplayShowTitleEnabled(false)
+        }
+    }
+
+    override fun onBackPressed() {
+        if(binding.drawerLayout.isOpen){
+            binding.drawerLayout.close()
+        }else{
+            finish()
+        }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.appbar_menu,menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId){
+            R.id.open_drawer ->{
+                binding.drawerLayout.openDrawer(Gravity.LEFT)
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
     private fun setNavigation() = with(binding){
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.fragment_container_view) as NavHostFragment

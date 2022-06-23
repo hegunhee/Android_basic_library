@@ -16,4 +16,5 @@ class RecordFragment : Fragment() {
     ): View? {
         return inflater.inflate(R.layout.fragment_record,container,false)
     }
+
 }
