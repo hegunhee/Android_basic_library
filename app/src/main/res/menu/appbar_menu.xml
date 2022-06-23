@@ -6,5 +6,6 @@
         android:id="@+id/open_drawer"
         android:icon="@drawable/ic_dehaze"
         app:showAsAction="always"
+
         android:title="open_drawer" />
 </menu>
