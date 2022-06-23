@@ -20,7 +20,7 @@ class SharedPreferenceManager private constructor(context : Context) {
         const val KEY = "key"
         const val DEFAULT_VALUE = "defualt"
 
-        var instance : SharedPreferenceManager? = null
+        private var instance : SharedPreferenceManager? = null
         fun getInstance(context : Context) : SharedPreferenceManager{
             if(instance == null){
                 instance = SharedPreferenceManager(context)
