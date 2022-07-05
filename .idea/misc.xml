@@ -4,8 +4,10 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/gunhe/AndroidStudioProjects/Android_basic_library/app/src/main/res/layout/activity_action_view.xml" value="0.2755208333333333" />
+        <entry key="..\:/Users/gunhe/AndroidStudioProjects/Android_basic_library/app/src/main/res/layout/activity_chip_test.xml" value="0.3509963768115942" />
         <entry key="..\:/Users/gunhe/AndroidStudioProjects/Android_basic_library/app/src/main/res/layout/activity_click.xml" value="0.2755208333333333" />
         <entry key="..\:/Users/gunhe/AndroidStudioProjects/Android_basic_library/app/src/main/res/layout/activity_drawer_layout_main.xml" value="0.21370967741935484" />
+        <entry key="..\:/Users/gunhe/AndroidStudioProjects/Android_basic_library/app/src/main/res/layout/activity_fragment_container.xml" value="0.3509963768115942" />
         <entry key="..\:/Users/gunhe/AndroidStudioProjects/Android_basic_library/app/src/main/res/layout/fragment_record.xml" value="0.23385416666666667" />
         <entry key="..\:/Users/gunhe/AndroidStudioProjects/Android_basic_library/app/src/main/res/layout/fragment_sharedpreference.xml" value="0.16109422492401215" />
         <entry key="..\:/Users/gunhe/AndroidStudioProjects/Android_basic_library/app/src/main/res/layout/fragment_today.xml" value="0.174609375" />
@@ -18,7 +20,7 @@
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">
