@@ -6,13 +6,75 @@
     android:layout_height="match_parent"
     tools:context=".ChipTest.ChipTestActivity">
 
-    <com.google.android.material.chip.Chip
-        android:id="@+id/singleChip"
+    <TextView
+        android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        style="@style/Widget.MaterialComponents.Chip.Filter"
-        android:text="눌러보세용"
+        android:text="chip을 눌러주세요"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/chip_group"
+        style="@style/Widget.MaterialComponents.Chip.Filter"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textView"
+        app:singleLine="false">
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/mon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="월요일" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/tue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="화요일" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/wed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="수요일" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/thur"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="목요일" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/fri"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="금요일" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/sat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="토요일" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/sun"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="일요일" />
+
+
+    </com.google.android.material.chip.ChipGroup>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:text="버튼입니다."
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/chip_group" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
