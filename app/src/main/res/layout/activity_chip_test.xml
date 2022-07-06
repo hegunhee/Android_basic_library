@@ -16,7 +16,6 @@
 
     <com.google.android.material.chip.ChipGroup
         android:id="@+id/chip_group"
-        style="@style/Widget.MaterialComponents.Chip.Filter"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
@@ -26,6 +25,7 @@
 
         <com.google.android.material.chip.Chip
             android:id="@+id/mon"
+            style="@style/Widget.MaterialComponents.Chip.Filter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="월요일" />
@@ -34,42 +34,49 @@
             android:id="@+id/tue"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            style="@style/Widget.MaterialComponents.Chip.Filter"
             android:text="화요일" />
 
         <com.google.android.material.chip.Chip
             android:id="@+id/wed"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            style="@style/Widget.MaterialComponents.Chip.Filter"
             android:text="수요일" />
 
         <com.google.android.material.chip.Chip
             android:id="@+id/thur"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            style="@style/Widget.MaterialComponents.Chip.Filter"
             android:text="목요일" />
 
         <com.google.android.material.chip.Chip
             android:id="@+id/fri"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            style="@style/Widget.MaterialComponents.Chip.Filter"
             android:text="금요일" />
 
         <com.google.android.material.chip.Chip
             android:id="@+id/sat"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            style="@style/Widget.MaterialComponents.Chip.Filter"
             android:text="토요일" />
 
         <com.google.android.material.chip.Chip
             android:id="@+id/sun"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            style="@style/Widget.MaterialComponents.Chip.Filter"
             android:text="일요일" />
 
 
     </com.google.android.material.chip.ChipGroup>
 
     <Button
+        android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"

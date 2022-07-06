@@ -16,11 +16,8 @@ class ChipTestActivity : AppCompatActivity() {
     }
 
     private fun initListener() = with(binding){
-//        singleChip.setOnClickListener {
-//            Toast.makeText(this@ChipTestActivity, "chip click", Toast.LENGTH_SHORT).show()
-//        }
-        singleChip.setOnCloseIconClickListener {
-            Toast.makeText(this@ChipTestActivity, "뭐지", Toast.LENGTH_SHORT).show()
+        button.setOnClickListener {
+            Toast.makeText(this@ChipTestActivity, chipGroup.checkedChipIds.toString(), Toast.LENGTH_SHORT).show()
         }
     }
 }
