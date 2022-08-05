@@ -11,25 +11,24 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Android_basic_library">
         <activity
-            android:name=".ChipTest.ChipTestActivity"
-            android:exported="true">
+            android:name=".compose.ComposeActivity"
+            android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
+        </activity>
+        <activity
+            android:name=".ChipTest.ChipTestActivity"
+            android:exported="true">
         </activity>
         <activity
             android:name=".drawerLayoutTest.DrawerLayoutMainActivity"
-            android:exported="true">
-
-        </activity>
+            android:exported="true"></activity>
         <activity
             android:name=".navigation.NavigationMainActivity"
-            android:exported="true">
-
-        </activity>
+            android:exported="true"></activity>
         <activity
             android:name=".advancedNoti.LogActivity"
             android:exported="true" />
