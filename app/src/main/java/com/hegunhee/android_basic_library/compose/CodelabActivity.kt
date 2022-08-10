@@ -32,7 +32,7 @@ class CodelabActivity : ComponentActivity() {
 fun MyApp() {
     var shouldShowOnBoarding by remember{ mutableStateOf(true)}
     if(shouldShowOnBoarding){
-        OnboardingScreen(onContinueClicked = {shouldShowOnBoarding= false})
+        OnBoardingScreen(onContinueClicked = {shouldShowOnBoarding= false})
     }else{
         Greetings()
     }
@@ -77,8 +77,8 @@ fun Greeting(name: String) {
 }
 
 @Composable
-fun OnboardingScreen(onContinueClicked : () -> Unit){
-    var shouldShowOnboarding by remember  { mutableStateOf(true)}
+fun OnBoardingScreen(onContinueClicked : () -> Unit){
+    var shouldShowOnBoarding by remember  { mutableStateOf(true)}
     Surface{
         Column(
             modifier =Modifier.fillMaxSize(),
