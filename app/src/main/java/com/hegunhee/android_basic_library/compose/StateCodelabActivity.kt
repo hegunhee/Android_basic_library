@@ -18,6 +18,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
+import androidx.lifecycle.viewmodel.compose.viewModel
 
 class StateCodelabActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,14 +36,17 @@ class StateCodelabActivity : ComponentActivity() {
 
 @Composable
 fun WellnessTasksList(
-    modifier : Modifier = Modifier,
-    list : List<WellnessTask> = remember{ getWellnessTasks()}
-){
-    LazyColumn(
-        modifier = modifier
+    list: List<WellnessTask>,
+    onCloseTask: (WellnessTask) -> Unit,
+    modifier : Modifier = Modifier
     ){
-        items(list) { task ->
-            WellnessTaskItem(taskName = task.label)
+    LazyColumn(modifier = modifier) {
+        items(items = list,
+        key = {task -> task.id}) { task ->
+            WellnessTaskItem(taskName = task.label,
+                checked = task.checked,
+                onCheckedChange = {checked -> onCheckedTask(task,checked)},
+                onClose = {onCloseTask})
         }
     }
 }
@@ -72,18 +76,17 @@ fun WellnessTaskItem(
     }
 }
 
-private fun getWellnessTasks() = List(30) {i -> WellnessTask(i,"Task # $i")}
 @Composable
-fun WellnessTaskItem(taskName: String, modifier: Modifier = Modifier) {
+fun WellnessTaskItem(taskName: String, onClose: () -> Unit,modifier: Modifier = Modifier) {
     var checkedState by remember { mutableStateOf(false) }
 
     WellnessTaskItem(
         taskName = taskName,
         checked = checkedState,
-        onCheckedChange = { newValue -> checkedState = newValue},
-        onClose = { },
+        onCheckedChange = { newValue -> checkedState = newValue },
+        onClose = onClose,
         modifier = modifier
-        )
+    )
 }
 
 @Composable
@@ -122,9 +125,16 @@ fun WaterCounter(modifier: Modifier = Modifier) {
 }
 
 @Composable
-fun WellnessScreen(modifier: Modifier = Modifier) {
-    Column(modifier = modifier ) {
+fun WellnessScreen(
+    modifier: Modifier = Modifier,
+    wellnessViewModel: WellnessViewModel = viewModel()
+) {
+    Column(modifier = modifier) {
         StatefulCounter()
-        WellnessTasksList()
+        WellnessTasksList(
+            list = wellnessViewModel.tasks,
+            onCheck
+            onCloseTask = {task -> wellnessViewModel.remove(task)}
+        )
     }
 }

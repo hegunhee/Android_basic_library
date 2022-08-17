@@ -1,6 +1,3 @@
 package com.hegunhee.android_basic_library.compose
 
-data class WellnessTask(
-    val id: Int,
-    val label: String
-)
+data class WellnessTask(val id: Int, val label: String, var checked: Boolean = false)
