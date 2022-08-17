@@ -1,12 +1,15 @@
 package com.hegunhee.android_basic_library.compose
 
 import android.os.Bundle
+import android.widget.CheckBox
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Close
@@ -31,20 +34,37 @@ class StateCodelabActivity : ComponentActivity() {
 }
 
 @Composable
+fun WellnessTasksList(
+    modifier : Modifier = Modifier,
+    list : List<WellnessTask> = remember{ getWellnessTasks()}
+){
+    LazyColumn(
+        modifier = modifier
+    ){
+        items(list) { task ->
+            WellnessTaskItem(taskName = task.label)
+        }
+    }
+}
+
+@Composable
 fun WellnessTaskItem(
     taskName: String,
+    checked: Boolean,
+    onCheckedChange: (Boolean) -> Unit,
     onClose: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     Row(
         modifier = modifier, verticalAlignment = Alignment.CenterVertically
-    ){
+    ) {
         Text(
             modifier = Modifier
                 .weight(1f)
                 .padding(start = 16.dp),
             text = taskName
         )
+        Checkbox(checked = checked, onCheckedChange = onCheckedChange)
         IconButton(onClick = onClose) {
             Icon(Icons.Filled.Close, contentDescription = "Close")
 
@@ -52,13 +72,27 @@ fun WellnessTaskItem(
     }
 }
 
+private fun getWellnessTasks() = List(30) {i -> WellnessTask(i,"Task # $i")}
 @Composable
-fun StatelessCounter(count : Int, onIncrement : () -> Unit,modifier: Modifier = Modifier){
+fun WellnessTaskItem(taskName: String, modifier: Modifier = Modifier) {
+    var checkedState by remember { mutableStateOf(false) }
+
+    WellnessTaskItem(
+        taskName = taskName,
+        checked = checkedState,
+        onCheckedChange = { newValue -> checkedState = newValue},
+        onClose = { },
+        modifier = modifier
+        )
+}
+
+@Composable
+fun StatelessCounter(count: Int, onIncrement: () -> Unit, modifier: Modifier = Modifier) {
     Column(modifier = modifier.padding(16.dp)) {
-        if(count > 0){
+        if (count > 0) {
             Text("You've had $count glasses.")
         }
-        Button(onClick = onIncrement,Modifier.padding(top = 8.dp), enabled = count < 10){
+        Button(onClick = onIncrement, Modifier.padding(top = 8.dp), enabled = count < 10) {
             Text("Add one")
         }
 
@@ -66,13 +100,14 @@ fun StatelessCounter(count : Int, onIncrement : () -> Unit,modifier: Modifier = 
 }
 
 @Composable
-fun StatefulCounter(modifier: Modifier = Modifier){
-    var waterCount by remember { mutableStateOf(0)}
+fun StatefulCounter(modifier: Modifier = Modifier) {
+    var waterCount by remember { mutableStateOf(0) }
 
-    var juiceCount by remember { mutableStateOf(0)}
-    StatelessCounter(count = waterCount, onIncrement = { waterCount++})
+    var juiceCount by remember { mutableStateOf(0) }
+    StatelessCounter(count = waterCount, onIncrement = { waterCount++ })
     StatelessCounter(count = juiceCount, onIncrement = { juiceCount++ })
 }
+
 @Composable
 fun WaterCounter(modifier: Modifier = Modifier) {
     Column(modifier = modifier.padding(16.dp)) {
@@ -88,5 +123,8 @@ fun WaterCounter(modifier: Modifier = Modifier) {
 
 @Composable
 fun WellnessScreen(modifier: Modifier = Modifier) {
-    StatefulCounter(modifier)
+    Column(modifier = modifier ) {
+        StatefulCounter()
+        WellnessTasksList()
+    }
 }
